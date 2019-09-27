@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NinetyNineCats</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+    <a href="<%= cats_url %>">HOME</a> 
+    <br>
+
+    <%if current_user %> 
+    <%= current_user.user_name.capitalize %> 
+    <br>
+
+      <form action="<%= session_url(current_user) %>" method="POST">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Log-out">
+      </form>
+
+    <%else%>
+    
+      <form action="<%= new_user_url %>"> 
+      <input type ="submit" value="Sign-up">
+      </form>
+
+      <form action="<%= new_session_url %>">
+      <input type="submit" value="Log-in">
+      </form>
+
+    <%end%>
+  <body>
+    <%= yield %>
+  </body>
+
+</html>

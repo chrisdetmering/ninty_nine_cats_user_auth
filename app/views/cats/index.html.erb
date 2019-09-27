@@ -1,0 +1,10 @@
+<h1>Cats upon cats!</h1>
+
+<ul>
+  <% @cats.each do |cat| %>
+    <li><a href="<%= cat_url(cat) %>"><%= cat.name %></a></li>
+  <% end %>
+</ul>
+
+<% action = (!current_user.nil?) ? new_cat_url : new_session_url%>
+  <a href="<%= action  %>">Create cat</a>
